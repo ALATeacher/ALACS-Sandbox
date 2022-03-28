@@ -17,7 +17,7 @@ sudo useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 echo Installing Tomcat...
 wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz -P ~
 sudo mkdir /opt/tomcat
-sudo tar -xzf apache-tomcat-9.0.60.tar.gz -C /opt/tomcat/
+sudo tar -xzf ~/apache-tomcat-9.0.60.tar.gz -C /opt/tomcat/
 sudo mv /opt/tomcat/apache-tomcat-9.0.60 /opt/tomcat/tomcatapp
 sudo chown -R tomcat: /opt/tomcat
 sudo chmod +x /opt/tomcat/tomcatapp/bin/*.sh
