@@ -22,23 +22,23 @@ sudo mv /opt/tomcat/apache-tomcat-9.0.60 /opt/tomcat/tomcatapp
 sudo chown -R tomcat: /opt/tomcat
 sudo chmod +x /opt/tomcat/tomcatapp/bin/*.sh
 sudo touch /etc/systemd/system/tomcat.service
-echo "[Unit]" >> /etc/systemd/system/tomcat.service
-echo "Description=Tomcat 9 servlet container" >> /etc/systemd/system/tomcat.service
-echo "After=network.target" >> /etc/systemd/system/tomcat.service
-echo "[Service]" >> /etc/systemd/system/tomcat.service
-echo "Type=forking" >> /etc/systemd/system/tomcat.service
-echo "User=tomcat" >> /etc/systemd/system/tomcat.service
-echo "Group=tomcat" >> /etc/systemd/system/tomcat.service
-echo Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd6" >> /etc/systemd/system/tomcat.service
-echo Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true" >> /etc/systemd/system/tomcat.service
-echo Environment="CATALINA_BASE=/opt/tomcat/tomcatapp" >> /etc/systemd/system/tomcat.service
-echo Environment="CATALINA_HOME=/opt/tomcat/tomcatapp" >> /etc/systemd/system/tomcat.service
-echo Environment="CATALINA_PID=/opt/tomcat/tomcatapp/temp/tomcat.pid" >> /etc/systemd/system/tomcat.service
-echo Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC" >> /etc/systemd/system/tomcat.service
-echo ExecStart=/opt/tomcat/tomcatapp/bin/startup.sh >> /etc/systemd/system/tomcat.service
-echo ExecStop=/opt/tomcat/tomcatapp/bin/shutdown.sh >> /etc/systemd/system/tomcat.service
-echo [Install] >> /etc/systemd/system/tomcat.service
-echo WantedBy=multi-user.target >> /etc/systemd/system/tomcat.service
+sudo bash -c 'echo "[Unit]" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "Description=Tomcat 9 servlet container" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "After=network.target" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "[Service]" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "Type=forking" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "User=tomcat" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo "Group=tomcat" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd6" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="CATALINA_BASE=/opt/tomcat/tomcatapp" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="CATALINA_HOME=/opt/tomcat/tomcatapp" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="CATALINA_PID=/opt/tomcat/tomcatapp/temp/tomcat.pid" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC" >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo ExecStart=/opt/tomcat/tomcatapp/bin/startup.sh >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo ExecStop=/opt/tomcat/tomcatapp/bin/shutdown.sh >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo [Install] >> /etc/systemd/system/tomcat.service'
+sudo bash -c 'echo WantedBy=multi-user.target >> /etc/systemd/system/tomcat.service'
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now tomcat
@@ -65,10 +65,10 @@ sudo ln -s /etc/guacamole/guacamole.war /opt/tomcat/tomcatapp/webapps
 
 echo "GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/default/tomcat
 sudo touch /etc/guacamole/guacamole.properties
-echo "guacd-hostname: localhost" >> /etc/guacamole/guacamole.properties
-echo "guacd-port:    4822" >> /etc/guacamole/guacamole.properties
-echo "user-mapping:    /etc/guacamole/user-mapping.xml" >> /etc/guacamole/guacamole.properties
-echo "auth-provider:    net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider" >> /etc/guacamole/guacamole.properties
+sudo bash -c 'echo "guacd-hostname: localhost" >> /etc/guacamole/guacamole.properties'
+sudo bash -c 'echo "guacd-port:    4822" >> /etc/guacamole/guacamole.properties'
+sudo bash -c 'echo "user-mapping:    /etc/guacamole/user-mapping.xml" >> /etc/guacamole/guacamole.properties'
+sudo bash -c 'echo "auth-provider:    net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider" >> /etc/guacamole/guacamole.properties'
 
 sudo ln -s /etc/guacamole /opt/tomcat/tomcatapp/.guacamole
 
